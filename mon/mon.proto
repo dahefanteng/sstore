@@ -1,0 +1,15 @@
+syntax = "proto3";
+package mon;
+
+service Mon {
+	rpc SetMap(SetMapRequest) returns (SetMapResponse){}
+}
+
+message SetMapRequest {
+	string key = 1;
+	string value =2;
+}
+
+message SetMapResponse{
+	int32 rtcode = 1;
+}
