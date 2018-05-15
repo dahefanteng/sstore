@@ -2,7 +2,7 @@ package mon
 
 import (
 	"github.com/coreos/etcd/raft"
-	"github.com/coreos/etcd/raft/raftpb"
+	//"github.com/coreos/etcd/raft/raftpb"
 )
 
 type monNode struct {

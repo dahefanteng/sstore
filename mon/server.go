@@ -2,6 +2,8 @@ package mon
 
 import (
 	"google.golang.org/grpc"
+	"net"
+	"context"
 )
 
 const port = ":2379"
@@ -12,13 +14,15 @@ func StartServer() {
 		panic(err)
 	}
 	s := grpc.NewServer()
-	RegisterMonServer(s, &MonServer{})
+	RegisterMonServer(s, &monServer{})
 	s.Serve(ln)
 }
 
-type MonServer struct{}
+type monServer struct{
+	engine string
+}
 
-func (m *MonServer) SetMap(ctx context.Context, req *SetMapRequest) (*SetMapResponse, error) {
+func (m *monServer) SetMap(ctx context.Context, req *SetMapRequest) (*SetMapResponse, error) {
 	res := &SetMapResponse{Rtcode: 200}
 	return res, nil
 }
